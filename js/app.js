@@ -1,19 +1,34 @@
+var mouseIsDown = false;
+var keyIsDown = false;
+
 $(document).ready(function() {
+
 	$('.ryu').on('mouseenter', function() {
-		$('.ryu-ready').show();
-		$('.ryu-still').hide();
+		hideAllThree();
+		if (keyIsDown) {
+			showCool();
+		} else {
+			showReady();
+		}
 	});
 
 	$('.ryu').on('mouseleave', function() {
-		$('.ryu-ready').hide();
-		$('.ryu-still').show();
+		mouseIsDown = false;
+		$('.ryu-throwing').hide();
+		hideAllThree();
+		if (keyIsDown) {
+			showCool();
+		} else {
+			showStill();
+		}
 	});
 
 	$('.ryu').on('mousedown', function() {
+		mouseIsDown = true;
+		hideAllThree();
 		// play hadouken sound
 		playHadouken();
 		$('.ryu-throwing').show();
-		$('.ryu-ready').hide();
 		// animate hadouken to the right of the screen
 		$('.hadouken').finish().show()
 									.animate(
@@ -27,8 +42,35 @@ $(document).ready(function() {
 	});
 
 	$('.ryu').on('mouseup', function() {
+		mouseIsDown = false;
 		$('.ryu-throwing').hide();
-		$('.ryu-ready').show();
+		hideAllThree();
+
+		if (keyIsDown) {
+			showCool();
+		} else {
+			showReady();
+		}
+	});
+
+	$(document).on('keydown', function(event) {
+		if(event.which == 88 && !mouseIsDown) {
+			keyIsDown = true;
+			hideAllThree();
+			showCool();
+		}
+	});
+
+	$(document).on('keyup', function(event) {
+		if(event.which == 88) {
+			keyIsDown = false;
+			hideAllThree();
+			if($('.ryu').is(':hover') && !mouseIsDown) {
+				showReady();
+			} else if(!mouseIsDown) {
+				showStill();
+			}
+		}
 	});
 
 })
@@ -37,4 +79,28 @@ function playHadouken () {
   $('#hadouken-sound')[0].volume = 0.5;
   $('#hadouken-sound')[0].load();
   $('#hadouken-sound')[0].play();
+}
+
+function showStill() {
+	$('.ryu-still').show();
+	$('.ryu-ready').hide();
+	$('.ryu-cool').hide();
+}
+
+function showReady() {
+	$('.ryu-still').hide();
+	$('.ryu-ready').show();
+	$('.ryu-cool').hide();
+}
+
+function showCool() {
+	$('.ryu-still').hide();
+	$('.ryu-ready').hide();
+	$('.ryu-cool').show();
+}
+
+function hideAllThree() {
+	$('.ryu-still').hide();
+	$('.ryu-ready').hide();
+	$('.ryu-cool').hide();
 }

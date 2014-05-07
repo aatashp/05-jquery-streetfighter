@@ -4,9 +4,13 @@
 
 body {
   background-color: black;
+  font-family: Verdana, sans-serif;
+  font-size: 1.5em;
+  color: darkgrey;
 }
 
 .main {
+  display: block;
   background-color: white;
   margin-top: 110px;
   padding-left: 100px;
@@ -16,14 +20,15 @@ body {
 
 .ryu {
   float: left;
+  margin-top: 3px;
 }
 
-.ryu-ready, .ryu-still, .ryu-throwing {
+.ryu-ready, .ryu-still, .ryu-throwing, .ryu-cool {
   width: 659px;
   height: 494px;
 }
 
-.ryu-ready, .ryu-throwing, .hadouken {
+.ryu-ready, .ryu-throwing, .ryu-cool, .hadouken {
   display: none;
 } 
 
@@ -37,6 +42,10 @@ body {
 
 .ryu-throwing {
   background-image: url('../images/ryu-throwing-hadouken.png');
+}
+
+.ryu-cool {
+  background-image: url('../images/ryu-cool.gif');
 }
 
 .hadouken, .ryu-ready, .ryu-still, .ryu-throwing {
@@ -53,4 +62,28 @@ body {
 	float: left;
 }
 
+.content-wrapper {
+  position: absolute;
+  left: 700px;
+  width: 320px;
+}
 
+#instruction p {
+  margin-top: 20px;
+}
+
+
+.box_rotate {
+  -webkit-transform: rotate(180deg);  /* Chrome, Safari 3.1+ */
+    -moz-transform: rotate(180deg);  /* Firefox 3.5-15 */
+      -ms-transform: rotate(180deg);  /* IE 9 */
+        -o-transform: rotate(180deg);  /* Opera 10.50-12.00 */
+         transform: rotate(180deg);  /* Firefox 16+, IE 10+, Opera 12.50+ */
+}
+
+.box_transition {
+  -webkit-transition: all 10s ease-out;  /* Chrome 1-25, Safari 3.2+ */
+     -moz-transition: all 10s ease-out;  /* Firefox 4-15 */
+       -o-transition: all 10s ease-out;  /* Opera 10.50–12.00 */
+          transition: all 10s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.50+ */
+}

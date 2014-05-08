@@ -65,9 +65,15 @@ body {
 .content-wrapper {
   position: absolute;
   left: 700px;
-  width: 320px;
+  width: 450px;
 }
 
 #instruction p {
   margin-top: 20px;
+  width: 300px;
+  float: left;
+}
+
+#instruction p:nth-child(2) {
+ float: right;
 }

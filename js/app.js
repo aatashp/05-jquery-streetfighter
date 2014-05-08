@@ -62,7 +62,7 @@ $(document).ready(function() {
 
 	function keyUnPressed(event) {
 		if(event.which == keyNumber) {
-			ryuReady.toggle();
+			ryuStill.toggle();
 			ryuCool.toggle();
 		}
 	}

@@ -5,7 +5,7 @@ $(document).ready(function() {
 	var mouseIsDown = false,
 			keyIsDown = false,
 			hadoukenSound = $('#hadouken-sound'),
-			soundVolume = 0.5;
+			soundVolume = 0.5,
 			ryu = $('.ryu'),
 			ryuStill = $('.ryu-still'),
 			ryuReady = $('.ryu-ready'),
